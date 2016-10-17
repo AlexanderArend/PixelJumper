@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.grumman.com/schema/Pixel" xmlns:tns="http://www.grumman.com/schema/Pixel"
+	elementFormDefault="qualified">
+<xsd:element name="pixelRequest">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="coordinates" type="xsd:string" />
+      <xsd:element name="direction" type="xsd:string" />
+      <xsd:element name="movementType" type="xsd:string" />
+      <xsd:element name="userId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+ </xsd:element>
+<xsd:element name="pixelResponse">
+  
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="newCoordinates" type="xsd:string" />
+      <xsd:element name="pixelMovementAmount" type="xsd:string" />
+      <xsd:element name="userId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+</xsd:schema>
