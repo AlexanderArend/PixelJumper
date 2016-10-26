@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.grumman.com/schema/PixelHeader" xmlns:tns="http://www.grumman.com/schema/PixelHeader"
+	elementFormDefault="qualified">
+<xsd:element name="pixelHeader">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="authenticationToken" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+ </xsd:element>
+
+</xsd:schema>

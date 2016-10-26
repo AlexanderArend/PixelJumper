@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions xmlns:pixel="http://www.grumman.com/schema/Pixel"
+<wsdl:definitions  xmlns:pixelheader="http://www.grumman.com/schema/PixelHeader"
+	xmlns:pixel="http://www.grumman.com/schema/Pixel"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.grumman.com/service/Pixel/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	name="Pixel" targetNamespace="http://www.grumman.com/service/Pixel/">
@@ -9,12 +10,15 @@
 			element.
 		</wsdl:documentation>
 		<xsd:schema targetNamespace="http://www.grumman.com/service/Pixel/">
-			<xsd:import namespace="http://www.grumman.com/schema/Pixel"
-				schemaLocation="PixelJump.xsd"></xsd:import>
+			<xsd:import namespace="http://www.grumman.com/schema/Pixel" schemaLocation="PixelJump.xsd"></xsd:import>
+			<xsd:import namespace="http://www.grumman.com/schema/PixelHeader" schemaLocation="PixelHeader.xsd"></xsd:import>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="PixelRequest">
 		<wsdl:part element="pixel:pixelRequest" name="pixelRequest" />
+	</wsdl:message>
+	<wsdl:message name="pixelHeader">
+		<wsdl:part element="pixelheader:pixelHeader" name="pixelHeader" />
 	</wsdl:message>
 	<wsdl:message name="PixelResponse">
 		<wsdl:part element="pixel:pixelResponse" name="pixelResponse" />
@@ -40,9 +44,11 @@
 		<wsdl:operation name="Pixel">
 			<soap:operation soapAction="http://www.grumman.com/service/Pixel/Pixel" />
 			<wsdl:input>
+				<soap:header message="tns:pixelHeader" part="pixelHeader" use="literal" />
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
+				<soap:header message="tns:pixelHeader" part="pixelHeader" use="literal" />
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
