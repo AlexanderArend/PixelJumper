@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.grumman.com/schema/PixelCharSelect" xmlns:tns="http://www.grumman.com/schema/PixelCharSelect"
+	elementFormDefault="qualified">
+<xsd:element name="pixelCharSelectRequest">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="charType" type="xsd:string" />
+      <xsd:element name="userId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+ </xsd:element>
+<xsd:element name="pixelCharSelectResponse">
+  
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="maxHealth" type="xsd:int" />
+      <xsd:element name="currentHealth" type="xsd:int" />
+      <xsd:element name="movementFactor" type="xsd:int" />
+      <xsd:element name="currentLocation" type="xsd:string" />
+      <xsd:element name="charId" type="xsd:string" />
+      <xsd:element name="userId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+</xsd:schema>

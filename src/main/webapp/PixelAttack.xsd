@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.grumman.com/schema/PixelAttack" xmlns:tns="http://www.grumman.com/schema/PixelAttack"
+	elementFormDefault="qualified">
+	<xsd:element name="pixelAttackRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="currentCoords" type="xsd:string" />
+				<xsd:element name="coordinatesAffected" type="xsd:string" />
+				<xsd:element name="direction" type="xsd:string" />
+				<xsd:element name="movementType" type="xsd:int" />
+				<xsd:element name="range" type="xsd:int" />
+				<xsd:element name="attackId" type="xsd:string" />
+				<xsd:element name="userId" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="pixelAttackResponse">
+
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="newCoords" type="xsd:string" />
+				<xsd:element name="userIdHitByAttack" type="xsd:string" />
+				<xsd:element name="damageDone" type="xsd:int" />
+				<xsd:element name="hitTrue" type="xsd:string" />
+				<xsd:element name="attackId" type="xsd:string" />
+				<xsd:element name="userId" type="xsd:string" />
+				<xsd:element name="rangeRemaining" type="xsd:int" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

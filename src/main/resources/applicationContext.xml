@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jaxws="http://cxf.apache.org/jaxws"
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
@@ -27,11 +26,15 @@
 			</list>
 		</property>
 	</bean>
-	
 
+	<bean id="manageCharacter" class="com.grumman.character.manage.ManageCharacterImpl" />
+	<bean id="selectCharacter" class="com.grumman.character.select.SelectCharacterImpl" />
+	<bean id="coordinateAttack" class="com.grumman.coord.attack.CoordinateAttackImpl" />
 
-	<bean name="pixelImpl"
-		class="com.gruman.service.pixel.PixelImpl">
+	<bean name="pixelImpl" class="com.gruman.service.pixel.PixelImpl">
+		<property name="manageCharacter" ref="manageCharacter" />
+		<property name="coordinateAttack" ref="coordinateAttack" />
+		<property name="selectCharacter" ref="selectCharacter" />
 	</bean>
 
 	<!-- The CXF JAX-WS endpoint. The address attribute defines the HTTP address 
@@ -45,8 +48,7 @@
 		to a Spring bean. A # signifies that the endppoint is being implemented as 
 		a managed bean -->
 
-	<bean name="pixelBean"
-		class="com.gruman.service.pixel.PixelImpl">
+	<bean name="pixelBean" class="com.gruman.service.pixel.PixelImpl">
 		<property name="pixelService" ref="pixelImpl" />
 	</bean>
 

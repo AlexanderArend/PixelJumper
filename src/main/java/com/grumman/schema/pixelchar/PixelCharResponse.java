@@ -1,5 +1,5 @@
 
-package com.grumman.schema.pixel;
+package com.grumman.schema.pixelchar;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,10 +18,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="coordinates" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="direction" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="movementTypeFactor" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="successUpdating" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="isDead" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="userId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="currentHealth" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,84 +32,68 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "coordinates",
-    "direction",
-    "movementTypeFactor",
-    "userId"
+    "successUpdating",
+    "isDead",
+    "userId",
+    "currentHealth"
 })
-@XmlRootElement(name = "pixelRequest")
-public class PixelRequest {
+@XmlRootElement(name = "pixelCharResponse")
+public class PixelCharResponse {
 
     @XmlElement(required = true)
-    protected String coordinates;
+    protected String successUpdating;
     @XmlElement(required = true)
-    protected String direction;
-    protected int movementTypeFactor;
+    protected String isDead;
     @XmlElement(required = true)
     protected String userId;
+    protected int currentHealth;
 
     /**
-     * Gets the value of the coordinates property.
+     * Gets the value of the successUpdating property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCoordinates() {
-        return coordinates;
+    public String getSuccessUpdating() {
+        return successUpdating;
     }
 
     /**
-     * Sets the value of the coordinates property.
+     * Sets the value of the successUpdating property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCoordinates(String value) {
-        this.coordinates = value;
+    public void setSuccessUpdating(String value) {
+        this.successUpdating = value;
     }
 
     /**
-     * Gets the value of the direction property.
+     * Gets the value of the isDead property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDirection() {
-        return direction;
+    public String getIsDead() {
+        return isDead;
     }
 
     /**
-     * Sets the value of the direction property.
+     * Sets the value of the isDead property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDirection(String value) {
-        this.direction = value;
-    }
-
-    /**
-     * Gets the value of the movementTypeFactor property.
-     * 
-     */
-    public int getMovementTypeFactor() {
-        return movementTypeFactor;
-    }
-
-    /**
-     * Sets the value of the movementTypeFactor property.
-     * 
-     */
-    public void setMovementTypeFactor(int value) {
-        this.movementTypeFactor = value;
+    public void setIsDead(String value) {
+        this.isDead = value;
     }
 
     /**
@@ -134,6 +118,22 @@ public class PixelRequest {
      */
     public void setUserId(String value) {
         this.userId = value;
+    }
+
+    /**
+     * Gets the value of the currentHealth property.
+     * 
+     */
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    /**
+     * Sets the value of the currentHealth property.
+     * 
+     */
+    public void setCurrentHealth(int value) {
+        this.currentHealth = value;
     }
 
 }
