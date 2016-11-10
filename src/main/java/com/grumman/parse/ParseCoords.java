@@ -1,6 +1,6 @@
-package com.gruman.parse;
+package com.grumman.parse;
 
-import com.gruman.coords.Coordinates;
+import com.grumman.coords.Coordinates;
 
 public class ParseCoords {
 	public static Coordinates parseCoordinates(String coordsAsString){

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions  xmlns:pixelheader="http://www.grumman.com/schema/PixelHeader"
-	xmlns:pixel="http://www.grumman.com/schema/Pixel"
+<wsdl:definitions xmlns:pixel="http://www.grumman.com/schema/Pixel"
+	xmlns:pixelheader="http://www.grumman.com/schema/PixelHeader"
+	xmlns:pixelchar="http://www.grumman.com/schema/PixelChar"
+	xmlns:pixelselect="http://www.grumman.com/schema/PixelCharSelect"
+	xmlns:pixelattack="http://www.grumman.com/schema/PixelAttack"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.grumman.com/service/Pixel/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	name="Pixel" targetNamespace="http://www.grumman.com/service/Pixel/">
@@ -10,33 +13,74 @@
 			element.
 		</wsdl:documentation>
 		<xsd:schema targetNamespace="http://www.grumman.com/service/Pixel/">
-			<xsd:import namespace="http://www.grumman.com/schema/Pixel" schemaLocation="PixelJump.xsd"></xsd:import>
-			<xsd:import namespace="http://www.grumman.com/schema/PixelHeader" schemaLocation="PixelHeader.xsd"></xsd:import>
+			<xsd:import namespace="http://www.grumman.com/schema/Pixel"
+				schemaLocation="PixelJump.xsd"></xsd:import>
+			<xsd:import namespace="http://www.grumman.com/schema/PixelChar"
+				schemaLocation="PixelCharacter.xsd"></xsd:import>
+			<xsd:import namespace="http://www.grumman.com/schema/PixelAttack"
+				schemaLocation="PixelAttack.xsd"></xsd:import>
+			<xsd:import namespace="http://www.grumman.com/schema/PixelCharSelect"
+				schemaLocation="PixelCharSelect.xsd"></xsd:import>
+			<xsd:import namespace="http://www.grumman.com/schema/PixelHeader"
+				schemaLocation="PixelHeader.xsd"></xsd:import>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="PixelRequest">
 		<wsdl:part element="pixel:pixelRequest" name="pixelRequest" />
 	</wsdl:message>
-	<wsdl:message name="pixelHeader">
-		<wsdl:part element="pixelheader:pixelHeader" name="pixelHeader" />
-	</wsdl:message>
 	<wsdl:message name="PixelResponse">
 		<wsdl:part element="pixel:pixelResponse" name="pixelResponse" />
+	</wsdl:message>
+	<wsdl:message name="PixelHeader">
+		<wsdl:part element="pixelheader:pixelHeader" name="pixelHeader" />
+	</wsdl:message>
+	<wsdl:message name="PixelAttackRequest">
+		<wsdl:part element="pixelattack:pixelAttackRequest" name="pixelAttackRequest" />
+	</wsdl:message>
+	<wsdl:message name="PixelAttackResponse">
+		<wsdl:part element="pixelattack:pixelAttackResponse" name="pixelAttackResponse" />
+	</wsdl:message>
+	<wsdl:message name="PixelCharSelectRequest">
+		<wsdl:part element="pixelselect:pixelCharSelectRequest" name="pixelCharSelectRequest" />
+	</wsdl:message>
+	<wsdl:message name="PixelCharSelectResponse">
+		<wsdl:part element="pixelselect:pixelCharSelectResponse" name="pixelCharSelectResponse" />
+	</wsdl:message>
+	<wsdl:message name="PixelCharRequest">
+		<wsdl:part element="pixelchar:pixelCharRequest" name="pixelCharRequest" />
+	</wsdl:message>
+	<wsdl:message name="PixelCharResponse">
+		<wsdl:part element="pixelchar:pixelCharResponse" name="pixelCharResponse" />
 	</wsdl:message>
 	<wsdl:portType name="Pixel">
 		<wsdl:operation name="Pixel">
 			<wsdl:input message="tns:PixelRequest" />
 			<wsdl:output message="tns:PixelResponse" />
 		</wsdl:operation>
+		<wsdl:operation name="PixelAttack">
+			<wsdl:input message="tns:PixelAttackRequest" />
+			<wsdl:output message="tns:PixelAttackResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="PixelCharSelect">
+			<wsdl:input message="tns:PixelCharSelectRequest" />
+			<wsdl:output message="tns:PixelCharSelectResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="PixelCharUpdate">
+			<wsdl:input message="tns:PixelCharRequest" />
+			<wsdl:output message="tns:PixelCharResponse" />
+		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="PixelSOAP" type="tns:Pixel">
 		<wsdl:documentation>
 			Document literal sends a full XML document as the
 			message while RPC makes calls
-			to a remote object and provides features for handling binding and
+			to a remote object and provides features
+			for handling binding and
 			encoding. For most cases,
-			you will use document literal for your WSDL due to its flexibility. The
-			binding type
+			you will use
+			document literal for your WSDL due to its flexibility. The
+			binding
+			type
 			specifies that SOAP will be used as the protocol.
 		</wsdl:documentation>
 		<soap:binding style="document"
@@ -44,11 +88,52 @@
 		<wsdl:operation name="Pixel">
 			<soap:operation soapAction="http://www.grumman.com/service/Pixel/Pixel" />
 			<wsdl:input>
-				<soap:header message="tns:pixelHeader" part="pixelHeader" use="literal" />
+				<soap:header message="tns:PixelHeader" part="pixelHeader"
+					use="literal" />
 				<soap:body use="literal" />
 			</wsdl:input>
 			<wsdl:output>
-				<soap:header message="tns:pixelHeader" part="pixelHeader" use="literal" />
+				<soap:header message="tns:PixelHeader" part="pixelHeader"
+					use="literal" />
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PixelAttack">
+			<soap:operation soapAction="http://www.grumman.com/service/Pixel/Pixel" />
+			<wsdl:input>
+				<soap:header message="tns:PixelHeader" part="pixelHeader"
+					use="literal" />
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:PixelHeader" part="pixelHeader"
+					use="literal" />
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PixelCharSelect">
+			<soap:operation soapAction="http://www.grumman.com/service/Pixel/Pixel" />
+			<wsdl:input>
+				<soap:header message="tns:PixelHeader" part="tns:pixelHeader"
+					use="literal" />
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:PixelHeader" part="tns:pixelHeader"
+					use="literal" />
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PixelCharUpdate">
+			<soap:operation soapAction="http://www.grumman.com/service/Pixel/Pixel" />
+			<wsdl:input>
+				<soap:header message="tns:PixelHeader" part="tns:pixelHeader"
+					use="literal" />
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="tns:PixelHeader" part="tns:pixelHeader"
+					use="literal" />
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
@@ -57,11 +142,11 @@
 		<wsdl:documentation>
 			The address path we provided will be configured as
 			part of the jax-ws endpoint CXF definition.
-			The service will map to an interface in Java.
+			The service will map to an
+			interface in Java.
 		</wsdl:documentation>
 		<wsdl:port binding="tns:PixelSOAP" name="PixelSOAP">
-			<soap:address
-				location="http://localhost:8080/soap-pixel-endpoint/Pixel" />
+			<soap:address location="http://localhost:8080/soap-pixel-endpoint/Pixel" />
 		</wsdl:port>
 	</wsdl:service>
-	</wsdl:definitions>
+</wsdl:definitions>

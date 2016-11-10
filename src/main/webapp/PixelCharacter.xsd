@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.grumman.com/schema/PixelChar" xmlns:tns="http://www.grumman.com/schema/PixelChar"
+	elementFormDefault="qualified">
+<xsd:element name="pixelCharRequest">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="maxHealth" type="xsd:int" />
+      <xsd:element name="currentHealth" type="xsd:int" />
+      <xsd:element name="deductedhealth" type="xsd:int" />
+      <xsd:element name="movementFactory" type="xsd:string" />
+      <xsd:element name="currentLocation" type="xsd:string" />
+      <xsd:element name="userId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+ </xsd:element>
+<xsd:element name="pixelCharResponse">
+  
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="successUpdating" type="xsd:string" />
+      <xsd:element name="isDead" type="xsd:string" />
+      <xsd:element name="userId" type="xsd:string" />
+      <xsd:element name="currentHealth" type="xsd:int" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+</xsd:schema>
